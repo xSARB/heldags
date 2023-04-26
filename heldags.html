@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="NO">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+     <!-- kobler html filen med css filen -->
+    <link rel="stylesheet" href="heldags.css">
+    <title>heldags</title>
+</head>
+<body>
+
+    <h2>Italia</h2>
+
+    <!-- lager en div og gir den en class -->
+    <div class="lag-container">
+        <!-- legger til knapper med funksjoner på  -->
+        <button onclick="milan()"> AC Milan</button>
+        <button onclick="roma()">AS Roma</button>
+        <button onclick="inter()">FC Inter</button>
+    </div>
+    <!-- mellomrom -->
+    <br> 
+
+    <!-- lager en div for å vise bildene -->
+    <div id="lag-viser">
+    </div>
+    <!-- lager en div for å vise navnet til det valgte lage -->
+    <div id="navn-viser">
+        
+    </div>
+    <!-- lager en div for hvor brukeren kan skrive inn lag -->
+    <div id="vinnersjekk">
+        <div id="kamp">
+            <Strong>NB!: skriv kun navnet til de lagene som står ovenfor</Strong>
+            <br>
+            <input type="text" id="lag1" placeholder="lag 1">
+            <strong>VS</strong>
+            <input type="text" id="lag2" placeholder="lag 2">
+            
+        </div>
+    <!-- lager en div for hvor brukeren kan skrive inn resultat -->
+        
+    <div id="stillingen">
+            <h3>stillingen: NB! ikke legg til negative tall </h3>
+            <input type="text" id="stilling1" placeholder="stilling til lag 1">
+            <input type="text" id="stilling2" placeholder="stilling til lag 2">
+        </div>
+        <strong>NB! ikke trykk knappen flere ganger for å hindre kopering av samme resultat flere ganger</strong>
+        <br>
+            <button onclick="resultat()">Resultat</button>
+    </div>
+
+
+    <!-- lager div med tabell -->
+    <div >
+        <table border="1" id="slutt-resultat">
+            <tr>
+                <th>Kamp</th>
+                <th colspan="2">Resultat</th>
+            </tr>
+        </table>
+    </div>
+    <br>
+    <div id="melding"></div>
+    <br>
+    <br>
+    <div>
+        <table border="1" id="leaderboard">
+            <tr>
+                <th>Nr</th>
+                <th>Lag</th>
+                <th>Antall kamper</th>
+                <th>Antall vunnet</th>
+                <th>atnall uavgjort</th>
+                <th>antall tapt</th>
+                <th>egen mål</th>
+                <th>mot mot</th>
+                <th>Mål forskjell</th>
+                <th>Poengsum</th>
+            </tr>
+
+        </table>
+    </div>
+</body>
+<script>
+    // henter div taggene inn i javascript 
+    let lagViserEl = document.getElementById("lag-viser")
+    let navnViserEl = document.getElementById("navn-viser")
+
+// deklarer vinner poeng, taper poeng og uavgjort poeng
+let v = 3;
+let u = 1;
+let t = 0;
+
+// funksjonen for milan lage for å vise det på skjermen
+    function milan (){
+        
+        lagViserEl.innerHTML += '<img src="bilder/milan.jpg" class="bilde" alt="">'
+        navnViserEl.innerHTML += "<p> AC Milan </p>" 
+
+
+    }
+// funksjonen for inter lage for å vise det på skjermen
+
+    function inter (){
+        lagViserEl.innerHTML += '<img src="bilder/inter1.jpg" class="bilde" alt="">'
+        navnViserEl.innerHTML += "<p> FC Inter </p>" 
+
+    }
+// funksjonen for roma lage for å vise det på skjermen
+
+    function roma (){
+        lagViserEl.innerHTML += '<img src="bilder/roma.jpg" class="bilde" alt="">'
+        navnViserEl.innerHTML += "<p> AS Roma </p>" 
+    }
+
+
+    // funksjonen som skal beregne resultatene og legge dem inn i tabellen 
+    function resultat(){
+        // henter inn de input feltene som jeg laget i html 
+    let lag1El = document.getElementById("lag1").value
+    let lag2El = document.getElementById("lag2").value
+    let stilling1El = document.getElementById("stilling1").value
+    let stilling2El = document.getElementById("stilling2").value
+    let meldingEl = document.getElementById("melding")
+    
+    // uavgjort situasjon
+        if(parseInt(stilling1El) - parseInt(stilling2El) == 0){
+           meldingEl.innerHTML = "<strong> uavgjort! begge lag får "+ u + " poeng! </strong>" 
+
+        }
+        // hvis lag 1 vinner
+        if(stilling1El > stilling2El){
+
+            meldingEl.innerHTML = "<strong>"+ lag1El+ " vant med mål forskjell: "+ (parseInt(stilling1El) - parseInt(stilling2El))+ " og får "+ v + " poeng! Og "+ lag2El+ " tapt og får: "+ t+ "</strong>" 
+        }
+        // hvis lag 2 vinner
+        if(stilling1El < stilling2El){
+
+            meldingEl.innerHTML = "<strong>"+ lag1El+ " vant med mål forskjell: "+ (parseInt(stilling2El) - parseInt(stilling1El))+ " og får "+ v + " poeng! Og "+ lag2El+ " tapt og får: "+ t+ "</strong>" 
+            
+
+        }
+        // legger resultatene i tabellen
+        let tabell1 = document.getElementById("slutt-resultat")
+        tabell1.innerHTML += "<tr><td>"+ lag1El +" VS "+ lag2El + "</td><td>"+ stilling1El + "-"+ stilling2El + "</tr>"
+
+
+    }
+</script>
+</html>

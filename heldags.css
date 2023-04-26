@@ -1,0 +1,104 @@
+/* gir alle taggene margin 0 og padding 0 slik at de tar hele plassen */
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+/* gir body en bakgrunnsfarge og bytter skrift typen */
+body {
+	background-color: #f8f8f8;
+	font-family: Arial, sans-serif;
+}
+/* lager mellom rom mellom knappene og gir hele div taggen en bakgrunnsfarge */
+.lag-container{
+    display: flex;
+    justify-content: center;
+    justify-content: space-around;
+    background-color: #085df08e;
+}
+    /* gir knappen en design */
+     button {
+     
+        background-color: #47b51b;
+        border: 1px solid white;
+        border-radius: 4px;
+        color: white;
+        padding: 7.5px 16px;
+        text-align: center;
+        text-decoration: none;
+        display: inline-block;
+        font-size: 16px;
+        margin: 4px 2px;
+        cursor: pointer;
+      }
+      /* gir input feltet en design  */
+      input[type=text] {
+        width: 18%;
+        padding: 12px 20px;
+        margin: 8px 0;
+        display: inline-block;
+        border: 1px solid #ccc;
+        border-radius: 4px;
+        box-sizing: border-box;
+      }
+/* div taggen som skal vise draktene */
+.lag-viser{
+    position: relative;
+    width: 500px;
+    display: flex;
+    justify-items: center;
+}
+/* endre størrelsen på bildene */
+img{
+    width: 200px;
+    height: 200px;
+}
+/* gir bildene en animasjon på 0.5 sekundet */
+.bilde{
+    animation-name: test;
+    animation-duration: .5s;
+}
+/* animasjonen */
+@keyframes test{
+    0%  {width:100% ;}
+    25% {width: 75%;}
+    50%  {width: 50;}
+    75% {width: 25%;}
+    100% {width: 0%;}
+}
+/* gjør slik at nettsiden kan passe andre apilkasjoner som mobiltelefon */
+@media screen and (max-width: 700px) {
+    .lag-container, .lag-viser{
+        flex-direction: column;
+    } /* hvilken klasser skal dette påvirket når skjermen blir mindre */
+        
+}
+
+/* gir tabellen en design */
+table {
+    font-family: arial, sans-serif;
+    border-collapse: collapse;
+    width: fit-content;
+  }
+  
+ th{
+    border: solid 1px black; 
+     background-color: #4570d2;
+     color: white;
+     text-align: left;
+     padding: 8px;
+ }
+
+ td{
+    border: solid 1px black;
+    padding: 8px;
+    text-align: left;
+
+ }
+ tr:nth-child(even) {
+    background-color: #9dd6d6;
+  }
+
+
+
+
